@@ -10,7 +10,7 @@ import {
 } from "../store/moviesSlice";
 import Modal from "../components/Modal";
 import Filters from "../components/Filter";
-import MovieCard from "../components/MovieCard";
+import MovieCard from "../components/Moviecard";
 import SkeletonCard from "../components/SkeletonCard";
 import EmptyState, { WatchlistEmptyIcon } from "../components/EmptyState";
 
