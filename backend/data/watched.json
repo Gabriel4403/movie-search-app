@@ -1,0 +1,99 @@
+[
+  {
+    "id": 22,
+    "title": "Pirates of the Caribbean: The Curse of the Black Pearl",
+    "description": "After Port Royal is attacked and pillaged by a mysterious pirate crew, capturing the governor's daughter Elizabeth Swann in the process, William Turner asks free-willing pirate Jack Sparrow to help him locate the crew's ship—The Black Pearl—so that he can rescue the woman he loves.",
+    "release_date": "2003-07-09",
+    "rating": 7.812,
+    "poster_path": "/z8onk7LV9Mmw6zKz4hT6pzzvmvl.jpg"
+  },
+  {
+    "id": 686809,
+    "title": "The White Nigger",
+    "description": "A documentary about renowned Norwegian author Ingvar Ambjørnsen. Being one of Norways most-read modern authors, and having written over 30 books of which seven have been made into movies, he visits old places that mean something to him. From his childhood to his older life, many stations in his life are called to and he shares some of his thoughts about them with the audience.",
+    "release_date": "2011-10-15",
+    "rating": 9,
+    "genre_ids": [
+      99
+    ],
+    "poster_path": "/lFDpimZyCCUKYFUPStTruqgNeHt.jpg"
+  },
+  {
+    "id": 1071585,
+    "title": "M3GAN 2.0",
+    "description": "After the underlying tech for M3GAN is stolen and misused by a powerful defense contractor to create a military-grade weapon known as Amelia, M3GAN's creator Gemma realizes that the only option is to resurrect M3GAN and give her a few upgrades, making her faster, stronger, and more lethal.",
+    "release_date": "2025-06-25",
+    "rating": 7.204,
+    "genre_ids": [
+      28,
+      878,
+      53
+    ],
+    "poster_path": "/oekamLQrwlJjRNmfaBE4llIvkir.jpg"
+  },
+  {
+    "id": 1087192,
+    "title": "How to Train Your Dragon",
+    "description": "On the rugged isle of Berk, where Vikings and dragons have been bitter enemies for generations, Hiccup stands apart, defying centuries of tradition when he befriends Toothless, a feared Night Fury dragon. Their unlikely bond reveals the true nature of dragons, challenging the very foundations of Viking society.",
+    "release_date": "2025-06-06",
+    "rating": 7.922,
+    "genre_ids": [
+      14,
+      10751,
+      28,
+      12
+    ],
+    "poster_path": "/41dfWUWtg1kUZcJYe6Zk6ewxzMu.jpg"
+  },
+  {
+    "id": 1318447,
+    "title": "Apex",
+    "description": "A grieving woman pushing her limits on a solo adventure in the Australian wild is ensnared in a twisted game with a cunning killer who thinks she's prey.",
+    "release_date": "2026-04-24",
+    "rating": 6.427,
+    "genre_ids": [
+      28,
+      53
+    ],
+    "poster_path": "/eTp7gSPkSF3Aw79mNx1NkBP1PZT.jpg"
+  },
+  {
+    "id": 1011477,
+    "title": "Karate Kid: Legends",
+    "description": "After a family tragedy, kung fu prodigy Li Fong is uprooted from his home in Beijing and forced to move to New York City with his mother. When a new friend needs his help, Li enters a karate competition – but his skills alone aren't enough. Li's kung fu teacher Mr. Han enlists original Karate Kid Daniel LaRusso for help, and Li learns a new way to fight, merging their two styles into one for the ultimate martial arts showdown.",
+    "release_date": "2025-05-08",
+    "rating": 6.995,
+    "genre_ids": [
+      28,
+      12,
+      18
+    ],
+    "poster_path": "/c90Lt7OQGsOmhv6x4JoFdoHzw5l.jpg"
+  },
+  {
+    "id": 1173971,
+    "title": "The Nigger",
+    "description": "The daughter of a wealthy man marries a young Black man against her father's wishes. Shortly after, the woman dies during childbirth, and her husband is killed during a police chase. A little Black boy is the result of this marriage. The little boy meets a young man named \"Reza,\" through whom he comes face to face with his grandfather.",
+    "release_date": "1973-03-21",
+    "rating": 9,
+    "genre_ids": [
+      35,
+      18
+    ],
+    "poster_path": "/j6fs0yhNKAl28vuNa2qITZDIFbM.jpg"
+  },
+  {
+    "id": 1865,
+    "title": "Pirates of the Caribbean: On Stranger Tides",
+    "description": "When Jack crosses paths with a woman from his past, he's not sure if it's love...or if she's a ruthless con artist using him to find the fabled Fountain of Youth.",
+    "release_date": "2011-05-15",
+    "rating": 6.566,
+    "genre_ids": [
+      12,
+      28,
+      14
+    ],
+    "poster_path": "/keGfSvCmYj7CvdRx36OdVrAEibE.jpg",
+    "userRating": 8
+  }
+]

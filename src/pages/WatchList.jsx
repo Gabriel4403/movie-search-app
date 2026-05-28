@@ -1,0 +1,119 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchWatchList,
+  openModal,
+  closeModal,
+  addToWatched,
+  getMovieDetails,
+  removeFromWatchlist,
+} from "../store/moviesSlice";
+import Modal from "../components/Modal";
+import Filters from "../components/Filter";
+import MovieCard from "../components/MovieCard";
+import SkeletonCard from "../components/SkeletonCard";
+import EmptyState, { WatchlistEmptyIcon } from "../components/EmptyState";
+
+function applyFiltersAndSort(list, filters) {
+  let result = [...list];
+  if (filters.genre) result = result.filter((m) => m.genre_ids?.includes(Number(filters.genre)));
+  if (filters.rating) result = result.filter((m) => m.rating >= Number(filters.rating));
+  if (filters.year) result = result.filter((m) => new Date(m.release_date).getFullYear() === Number(filters.year));
+
+  switch (filters.sort) {
+    case "rating_desc": return result.sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
+    case "rating_asc":  return result.sort((a, b) => (a.rating ?? 0) - (b.rating ?? 0));
+    case "year_desc":   return result.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+    case "year_asc":    return result.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
+    case "title_asc":   return result.sort((a, b) => a.title.localeCompare(b.title));
+    case "title_desc":  return result.sort((a, b) => b.title.localeCompare(a.title));
+    default: return result;
+  }
+}
+
+function WatchList() {
+  const dispatch = useDispatch();
+  const [toast, setToast] = useState(null);
+  const moviesState = useSelector((state) => state.movies || {});
+  const { watchlist, isModalOpen, movieDetails, filters, loading } = moviesState;
+
+  function showToast(message, type = "success") {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3000);
+  }
+
+  useEffect(() => { dispatch(fetchWatchList()); }, [dispatch]);
+
+  function handleMovieClick(id) {
+    dispatch(getMovieDetails(id)).then(() => dispatch(openModal()));
+  }
+
+  function handleAddWatched(userRating) {
+    if (movieDetails) {
+      const exists = moviesState.watched.find((m) => m.id === movieDetails.id);
+      if (!exists) {
+        dispatch(addToWatched({ ...movieDetails, userRating }));
+        dispatch(closeModal());
+        const ratingStr = userRating ? ` · ${userRating}/10` : "";
+        showToast(`"${movieDetails.title}" marked as Watched!${ratingStr}`);
+      } else {
+        showToast("Already in your Watched List.", "error");
+      }
+    }
+  }
+
+  function handleRemove(movieId) {
+    const title = movieDetails?.title;
+    dispatch(removeFromWatchlist(movieId));
+    dispatch(closeModal());
+    showToast(`"${title}" removed from Watchlist.`);
+  }
+
+  const filtered = applyFiltersAndSort(watchlist, filters);
+
+  return (
+    <div className="mt-20 pt-16 p-4 min-h-screen">
+      {toast && (
+        <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-xl shadow-lg text-sm font-semibold
+          ${toast.type === "error" ? "bg-red-600 text-white" : "bg-[#4ADE80] text-[#0E1510]"}`}>
+          {toast.message}
+        </div>
+      )}
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => dispatch(closeModal())}
+        movie={movieDetails}
+        showWatchListButton={false}
+        onAddWatched={handleAddWatched}
+        showDeleteButton={true}
+        onDeleteMovie={handleRemove}
+      />
+
+      <h1 className="text-3xl font-bold text-white mb-2 text-center">Your Watch List</h1>
+      <div className="flex justify-center">
+        <Filters />
+      </div>
+
+      {loading && watchlist.length === 0 ? (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)}
+        </div>
+      ) : filtered.length === 0 ? (
+        <EmptyState
+          icon={<WatchlistEmptyIcon />}
+          title={watchlist.length === 0 ? "Your watchlist is empty" : "No movies match your filters"}
+          subtitle={watchlist.length === 0 ? "Search for movies and add them to your watchlist" : "Try adjusting or clearing the filters"}
+        />
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {filtered.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} onClick={() => handleMovieClick(movie.id)} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default WatchList;
