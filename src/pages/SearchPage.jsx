@@ -10,9 +10,9 @@ import {
   getPopularMovies,
 } from "../store/moviesSlice";
 import Modal from "../components/Modal";
-import MovieCard from "../components/MovieCard";
-import SkeletonCard from "../components/SkeletonCard";
-import EmptyState, { SearchEmptyIcon } from "../components/EmptyState";
+import MovieCard from "../components/Moviecard";
+import SkeletonCard from "../components/Skeletoncard";
+import EmptyState, { SearchEmptyIcon } from "../components/Emptystate";
 
 function SearchPage() {
   const [showPopular, setShowPopular] = useState(false);

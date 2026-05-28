@@ -11,9 +11,9 @@ import {
 } from "../store/moviesSlice";
 import Modal from "../components/Modal";
 import Filters from "../components/Filter";
-import MovieCard from "../components/MovieCard";
-import SkeletonCard from "../components/SkeletonCard";
-import EmptyState, { WatchedEmptyIcon } from "../components/EmptyState";
+import MovieCard from "../components/Moviecard";
+import SkeletonCard from "../components/Skeletoncard";
+import EmptyState, { WatchedEmptyIcon } from "../components/Emptystate";
 
 function applyFiltersAndSort(list, filters) {
   let result = [...list];
