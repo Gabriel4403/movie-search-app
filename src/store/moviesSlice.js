@@ -70,8 +70,8 @@ export const moveToWatchlist = createAsyncThunk("movies/moveToWatchlist", async 
     genre_ids: movie.genre_ids || [],
     poster_path: movie.poster_path,
   };
-  await axios.post(`${API_URL}/watchlist`, movieToSend);
   await axios.delete(`${API_URL}/watched/${movie.id}`);
+  await axios.post(`${API_URL}/watchlist`, movieToSend);
   return movie.id;
 });
 
