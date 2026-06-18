@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   searchMovies,
@@ -8,6 +8,8 @@ import {
   addToWatched,
   addToWatchlist,
   getPopularMovies,
+  fetchWatchList,
+  fetchWatchedList,
 } from "../store/moviesSlice";
 import Modal from "../components/Modal";
 import MovieCard from "../components/Moviecard";
@@ -16,11 +18,18 @@ import EmptyState, { SearchEmptyIcon } from "../components/Emptystate";
 
 function SearchPage() {
   const [showPopular, setShowPopular] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
+  const [submittedQuery, setSubmittedQuery] = useState("");
   const [toast, setToast] = useState(null);
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
   const moviesState = useSelector((state) => state.movies || {});
   const { searchResults = [], popularMovies = [], loading = false, error = null, isModalOpen, movieDetails } = moviesState;
+  
+  useEffect(() => {
+  dispatch(fetchWatchList());
+  dispatch(fetchWatchedList());
+}, [dispatch]);
 
   function showToast(message, type = "success") {
     setToast({ message, type });
@@ -32,6 +41,8 @@ function SearchPage() {
     if (query.trim()) {
       dispatch(searchMovies(query));
       setShowPopular(false);
+      setHasSearched(true);
+      setSubmittedQuery(query.trim());
     }
   }
 
@@ -67,6 +78,7 @@ function SearchPage() {
 
   function fetchPopularMovies() {
     setShowPopular(true);
+    setHasSearched(false);
     setQuery("");
     if (popularMovies.length === 0) dispatch(getPopularMovies());
   }
@@ -84,8 +96,8 @@ function SearchPage() {
         </div>
       )}
 
-      <div className="sticky top-4 z-10 px-4">
-        <div className="mx-auto w-120 max-w-4xl bg-[#1A2E1D] rounded-2xl shadow p-4">
+     <div className="px-4">
+  <div className="mx-auto w-120 max-w-4xl bg-[#1A2E1D] rounded-2xl shadow p-4">
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <form onSubmit={handleSearch} className="flex flex-grow min-w-0 items-center gap-2">
               <input
@@ -96,12 +108,12 @@ function SearchPage() {
                 className="border text-white border-gray-400 p-2 rounded flex-grow min-w-0 bg-transparent"
               />
               <button type="submit"
-                className="bg-[#4ADE80] hover:bg-[#22C55E] text-[#0E1510] font-semibold px-4 py-2 rounded whitespace-nowrap">
+                className="bg-[#4ADE80] hover:bg-[#22C55E] cursor-pointer text-[#0E1510] font-semibold px-4 py-2 rounded whitespace-nowrap">
                 Search
               </button>
             </form>
             <button onClick={fetchPopularMovies}
-              className="bg-[#4ADE80] hover:bg-[#22C55E] text-[#0E1510] font-semibold px-6 py-2 rounded whitespace-nowrap w-full sm:w-auto">
+              className="bg-[#4ADE80] hover:bg-[#22C55E] cursor-pointer text-[#0E1510] font-semibold px-6 py-2 rounded whitespace-nowrap w-full sm:w-auto">
               Popular Movies
             </button>
           </div>
@@ -127,8 +139,14 @@ function SearchPage() {
         ) : moviesToShow.length === 0 ? (
           <EmptyState
             icon={<SearchEmptyIcon />}
-            title={showPopular ? "No popular movies found" : query ? `No results for "${query}"` : "Search for movies"}
-            subtitle={!query && !showPopular ? "Type a title above or browse popular movies" : null}
+            title={
+              showPopular
+                ? "No popular movies found"
+                : hasSearched
+                ? `No results for "${submittedQuery}"`
+                : "Search for movies"
+            }
+            subtitle={!hasSearched && !showPopular ? "Type a title above or browse popular movies" : null}
           />
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-6">

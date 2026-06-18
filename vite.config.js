@@ -6,8 +6,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     watch: {
-    
-      ignored: ['**/movie-backend/**']
+      ignored: ['**/backend/**']
     }
   }
 })

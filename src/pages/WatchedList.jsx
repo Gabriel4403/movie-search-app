@@ -77,7 +77,7 @@ function WatchedList() {
     }
   }
 
-  // Find existing rating for the currently open movie
+  
   const openMovieInWatched = movieDetails
     ? watched.find((m) => m.id === movieDetails.id)
     : null;

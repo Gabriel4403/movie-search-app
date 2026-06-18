@@ -1,52 +1,39 @@
 [
   {
-    "id": 207005,
-    "title": "Baldwin's Nigger",
-    "description": "James Baldwin and Dick Gregory discuss the Civil Rights Movement in 1960s Great Britain.",
-    "release_date": "1968-07-12",
-    "rating": 6.6,
-    "poster_path": "/uRHTgrhGxE6KprYir7gw6U80q3J.jpg"
-  },
-  {
-    "id": 315300,
-    "title": "Field Niggas",
-    "description": "Set entirely at night, Field Niggas takes us to the corner of 125th Street and Lexington Avenue in Harlem and introduces us to its faces. The non-synch audio track consists of conversations with and among those faces: dreams, regrets, arguments, affection, observations, opinions.",
-    "release_date": "2015-02-01",
-    "rating": 7.2,
-    "poster_path": "/lnc16ubhVOAK5258FoHEpFxjGCE.jpg"
-  },
-  {
-    "id": 593068,
-    "title": "\"Please Kill Me, I'm a Faggot Nigger Jew\"",
-    "description": "The viewer enters the Internet along with the producer, who uses a pseudonym in order to interview people who engage in a highly problematic and taboo practice: Nazi-fetish-based sadomasochism. Video images created directly on the computer and stories from the artist's memory ask such questions as: How does history affect the body? How are cultural memories transmitted? And, when historical events become part of a culture's discourse, how does the meaning of the original event shift?",
-    "release_date": "1996-07-23",
-    "rating": 5.5,
-    "poster_path": "/fjt30IoNbIF4X6RtTix24HivOsv.jpg"
-  },
-  {
-    "id": 1007757,
-    "title": "Swapped",
-    "description": "A small woodland creature and a majestic bird, two natural sworn enemies of the Valley, magically trade places and set off on an adventure of a lifetime to switch back. Their journey soon uncovers a greater threat—one that could endanger not only their species, but the entire valley they call home.",
-    "release_date": "2026-05-01",
-    "rating": 8,
+    "id": 936075,
+    "title": "Michael",
+    "description": "The story of Michael Jackson, one of the most influential artists the world has ever known, and his life beyond the music. His journey from the discovery of his extraordinary talent as the lead of the Jackson Five, to the visionary artist whose creative ambition fueled a relentless pursuit to become the biggest entertainer in the world, highlighting both his life off-stage and some of the most iconic performances from his early solo career.",
+    "release_date": "2026-04-22",
+    "rating": 8.65,
     "genre_ids": [
-      12,
-      16,
-      18,
-      10751,
-      14
-    ],
-    "poster_path": "/tHhxWxge06goXU6ZQH1hj7vK8Hd.jpg"
-  },
-  {
-    "id": 10867,
-    "title": "Malena",
-    "description": "12-year-old Renato experiences three significant events on the same day: the beginning of the Second World War, getting a bike, and witnessing the arrival of the gorgeous Malèna. Through his eyes, we see the curse of beauty and loneliness of Malena, whose husband is presumed dead, and, through his soul, we see his love for her.",
-    "release_date": "2000-10-27",
-    "rating": 7.429,
-    "genre_ids": [
+      10402,
       18
     ],
-    "poster_path": "/3OyQTl0IGkbnjDxd3MhztfPE34g.jpg"
+    "poster_path": "/zm0KAbOjlt9eR5y7vDiL2dEOwMl.jpg"
+  },
+  {
+    "id": 1071585,
+    "title": "M3GAN 2.0",
+    "description": "After the underlying tech for M3GAN is stolen and misused by a powerful defense contractor to create a military-grade weapon known as Amelia, M3GAN's creator Gemma realizes that the only option is to resurrect M3GAN and give her a few upgrades, making her faster, stronger, and more lethal.",
+    "release_date": "2025-06-25",
+    "rating": 7.204,
+    "genre_ids": [
+      28,
+      878,
+      53
+    ],
+    "poster_path": "/oekamLQrwlJjRNmfaBE4llIvkir.jpg"
+  },
+  {
+    "id": 1057265,
+    "title": "Peddi",
+    "description": "In 1980s rural Andhra Pradesh, a spirited villager unites his community through sports to defend their pride against a powerful rival.",
+    "release_date": "2026-06-03",
+    "rating": 6.547,
+    "genre_ids": [
+      28,
+      18
+    ],
+    "poster_path": "/kJAJNNBYlbqAcpTDxBNnaILSMTy.jpg"
   }
 ]
