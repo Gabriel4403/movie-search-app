@@ -85,28 +85,29 @@ function WatchedList() {
   const filtered = applyFiltersAndSort(watched, filters);
 
   return (
-    <div className="mt-20 pt-16 p-4 min-h-screen">
-      {toast && (
-        <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-xl shadow-lg text-sm font-semibold
-          ${toast.type === "error" ? "bg-red-600 text-white" : "bg-[#4ADE80] text-[#0E1510]"}`}>
-          {toast.message}
-        </div>
-      )}
+  <div className="mt-24 pt-16 p-4 min-h-screen">
+    {toast && (
+      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-xl shadow-lg text-sm font-semibold
+        ${toast.type === "error" ? "bg-red-600 text-white" : "bg-[#4ADE80] text-[#0E1510]"}`}>
+        {toast.message}
+      </div>
+    )}
 
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => dispatch(closeModal())}
-        movie={movieDetails}
-        showWatchListButton={false}
-        showWatchedButton={false}
-        showDeleteButton={true}
-        showMoveToWatchlistButton={true}
-        onDeleteMovie={handleDeleteMovie}
-        onEditRating={handleEditRating}
-        onMoveToWatchlist={handleMoveToWatchlist}
-        existingUserRating={openMovieInWatched?.userRating}
-      />
+    <Modal
+      isOpen={isModalOpen}
+      onClose={() => dispatch(closeModal())}
+      movie={movieDetails}
+      showWatchListButton={false}
+      showWatchedButton={false}
+      showDeleteButton={true}
+      showMoveToWatchlistButton={true}
+      onDeleteMovie={handleDeleteMovie}
+      onEditRating={handleEditRating}
+      onMoveToWatchlist={handleMoveToWatchlist}
+      existingUserRating={openMovieInWatched?.userRating}
+    />
 
+    <div className="mx-auto w-full max-w-4xl">
       <h1 className="text-3xl font-bold text-white mb-2 text-center">Your Watched List</h1>
       <div className="flex justify-center">
         <Filters showUserRating={true} />
@@ -135,7 +136,8 @@ function WatchedList() {
         </div>
       )}
     </div>
-  );
+  </div>
+);
 }
 
 export default WatchedList;

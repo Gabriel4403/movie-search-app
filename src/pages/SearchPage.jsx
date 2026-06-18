@@ -88,7 +88,7 @@ function SearchPage() {
     .slice(0, 20);
 
   return (
-    <div className="min-h-screen flex flex-col mt-20 pt-8 sm:mt-20 sm:pt-16">
+    <div className="min-h-screen flex flex-col  pt-8 sm:mt-20 sm:pt-16">
       {toast && (
         <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-xl shadow-lg text-sm font-semibold
           ${toast.type === "error" ? "bg-red-600 text-white" : "bg-[#4ADE80] text-[#0E1510]"}`}>
@@ -96,7 +96,7 @@ function SearchPage() {
         </div>
       )}
 
-     <div className="px-4">
+     <div className="px-4 mt-10">
   <div className="sm:w-120 mx-auto w-full max-w-4xl bg-[#1A2E1D] rounded-2xl shadow p-4">
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <form onSubmit={handleSearch} className="flex flex-grow min-w-0 items-center gap-2">
