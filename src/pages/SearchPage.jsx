@@ -96,8 +96,8 @@ function SearchPage() {
         </div>
       )}
 
-     <div className="px-4 mt-10">
-  <div className="sm:w-120 mx-auto w-full max-w-4xl bg-[#1A2E1D] rounded-2xl shadow p-4">
+     <div className="px-4 pt-20">
+  <div className="sm:w-120 mx-auto w-full max-w-4xl   bg-[#1A2E1D] rounded-2xl shadow p-4">
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <form onSubmit={handleSearch} className="flex flex-grow min-w-0 items-center gap-2">
               <input
@@ -108,7 +108,7 @@ function SearchPage() {
                 className="border text-white border-gray-400 p-2 rounded flex-grow min-w-0 bg-transparent"
               />
               <button type="submit"
-                className="bg-[#4ADE80] hover:bg-[#22C55E] cursor-pointer text-[#0E1510] font-semibold px-4 py-2 rounded whitespace-nowrap">
+                className="bg-[#4ADE80] hover:bg-[#22C55E] cursor-pointer text-[#0E1510] font-semibold px-2 py-2 rounded whitespace-nowrap">
                 Search
               </button>
             </form>
