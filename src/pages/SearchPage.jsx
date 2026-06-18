@@ -88,7 +88,7 @@ function SearchPage() {
     .slice(0, 20);
 
   return (
-    <div className="min-h-screen flex flex-col  pt-8 sm:mt-20 sm:pt-16">
+    <div className="min-h-screen flex flex-col  pt-8 sm:mt-16 ">
       {toast && (
         <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-xl shadow-lg text-sm font-semibold
           ${toast.type === "error" ? "bg-red-600 text-white" : "bg-[#4ADE80] text-[#0E1510]"}`}>
@@ -113,7 +113,7 @@ function SearchPage() {
               </button>
             </form>
             <button onClick={fetchPopularMovies}
-              className="bg-[#4ADE80] hover:bg-[#22C55E] cursor-pointer text-[#0E1510] font-semibold px-6 py-2 rounded whitespace-nowrap w-full sm:w-auto">
+              className="bg-[#4ADE80] hover:bg-[#22C55E] cursor-pointer text-[#0E1510] font-semibold px-20 sm:px-2 py-2 rounded whitespace-nowrap  sm:w-auto">
               Popular Movies
             </button>
           </div>
