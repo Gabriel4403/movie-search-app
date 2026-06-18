@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFilters } from "../store/moviesSlice";
 
 const SELECT_CLASS =
-  "bg-[#1A2E1D] border border-[#243B27] text-[#F0FDF4] p-2 pr-8 rounded appearance-none cursor-pointer";
+  "bg-[#1A2E1D] border border-[#243B27] text-[#F0FDF4] p-2 pr-8 rounded appearance-none cursor-pointer w-full";
 
 function Filters({ showUserRating = false }) {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function Filters({ showUserRating = false }) {
   }
 
   return (
-    <div className="flex flex-wrap gap-3 my-4 text-white justify-center">
+    <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3 my-4 text-white sm:justify-center">
       <SelectWrapper>
         <select name="genre" value={filters.genre} onChange={handleChange} className={SELECT_CLASS}>
           <option value="">All Genres</option>

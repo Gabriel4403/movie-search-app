@@ -8,12 +8,12 @@ const FALLBACK = (
 
 function MovieCard({ movie, onClick, badge, showUserRating = false }) {
   return (
-    <div
-      onClick={onClick}
-      className="border border-[#243B27] p-2 rounded-xl shadow text-white cursor-pointer
-                 transition-all duration-200 hover:scale-[1.03] hover:border-[#4ADE80] hover:shadow-[0_0_12px_rgba(74,222,128,0.2)]
-                 relative bg-[#0E1510]"
-    >
+   <div
+  onClick={onClick}
+  className="border border-[#243B27] p-2 rounded-xl shadow text-white cursor-pointer
+             transition-all duration-200 hover:scale-[1.03] hover:border-[#4ADE80] hover:shadow-[0_0_12px_rgba(74,222,128,0.2)]
+             relative bg-[#0E1510] min-w-0"
+>
       {movie.poster_path ? (
         <img
           src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}

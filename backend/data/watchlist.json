@@ -1,30 +1,5 @@
 [
   {
-    "id": 936075,
-    "title": "Michael",
-    "description": "The story of Michael Jackson, one of the most influential artists the world has ever known, and his life beyond the music. His journey from the discovery of his extraordinary talent as the lead of the Jackson Five, to the visionary artist whose creative ambition fueled a relentless pursuit to become the biggest entertainer in the world, highlighting both his life off-stage and some of the most iconic performances from his early solo career.",
-    "release_date": "2026-04-22",
-    "rating": 8.65,
-    "genre_ids": [
-      10402,
-      18
-    ],
-    "poster_path": "/zm0KAbOjlt9eR5y7vDiL2dEOwMl.jpg"
-  },
-  {
-    "id": 1071585,
-    "title": "M3GAN 2.0",
-    "description": "After the underlying tech for M3GAN is stolen and misused by a powerful defense contractor to create a military-grade weapon known as Amelia, M3GAN's creator Gemma realizes that the only option is to resurrect M3GAN and give her a few upgrades, making her faster, stronger, and more lethal.",
-    "release_date": "2025-06-25",
-    "rating": 7.204,
-    "genre_ids": [
-      28,
-      878,
-      53
-    ],
-    "poster_path": "/oekamLQrwlJjRNmfaBE4llIvkir.jpg"
-  },
-  {
     "id": 1057265,
     "title": "Peddi",
     "description": "In 1980s rural Andhra Pradesh, a spirited villager unites his community through sports to defend their pride against a powerful rival.",

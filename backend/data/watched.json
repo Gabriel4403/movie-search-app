@@ -99,5 +99,18 @@
     ],
     "poster_path": "/4TpBhdaSl5ALHbgeaYOLF8Q3haz.jpg",
     "userRating": 5
+  },
+  {
+    "id": 936075,
+    "title": "Michael",
+    "description": "The story of Michael Jackson, one of the most influential artists the world has ever known, and his life beyond the music. His journey from the discovery of his extraordinary talent as the lead of the Jackson Five, to the visionary artist whose creative ambition fueled a relentless pursuit to become the biggest entertainer in the world, highlighting both his life off-stage and some of the most iconic performances from his early solo career.",
+    "release_date": "2026-04-22",
+    "rating": 8.65,
+    "genre_ids": [
+      10402,
+      18
+    ],
+    "poster_path": "/zm0KAbOjlt9eR5y7vDiL2dEOwMl.jpg",
+    "userRating": 3
   }
 ]

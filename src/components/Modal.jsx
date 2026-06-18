@@ -68,40 +68,40 @@ export default function Modal({
 
   return createPortal(
     <dialog
-      ref={dialog}
-      className="bg-[#243B27] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 rounded-2xl shadow-lg backdrop:bg-black/50 w-full max-w-4xl max-h-[80vh] overflow-auto"
-      onClick={handleBackdropClick}
-    >
-      <button
-        onClick={onClose}
-        className="absolute rounded-4xl border-2 border-[#4ADE80] cursor-pointer top-4 right-3 p-2 px-4 text-white text-2xl font-extrabold hover:bg-red-600 hover:border-red-800"
-      >
-        &times;
-      </button>
+  ref={dialog}
+  className="bg-[#243B27] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 sm:p-6 rounded-2xl shadow-lg backdrop:bg-black/50 w-full max-w-4xl max-h-[85vh] sm:max-h-[80vh] overflow-auto"
+  onClick={handleBackdropClick}
+>
+  <button
+    onClick={onClose}
+    className="absolute rounded-full bg-[#243B27] border-2 border-[#4ADE80] cursor-pointer top-3 right-3 w-9 h-9 sm:w-auto sm:h-auto sm:rounded-4xl sm:px-4 sm:py-2 flex items-center justify-center text-white text-xl sm:text-2xl font-extrabold hover:bg-red-600 hover:border-red-800 z-10"
+  >
+    &times;
+  </button>
 
-      <div className="flex flex-col md:flex-row gap-6">
-        {/* Poster with fallback */}
-        {movie.poster_path ? (
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-            className="max-w-[300px] w-full rounded object-contain"
-            style={{ aspectRatio: "2 / 3" }}
-          />
-        ) : (
-          <div
-            className="max-w-[300px] w-full rounded bg-[#1A2E1D] flex items-center justify-center"
-            style={{ aspectRatio: "2 / 3" }}
-          >
-            <svg
-              className="w-16 h-16 text-[#3a5c3e]"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm3 3h6v6H9V9z" />
-            </svg>
-          </div>
-        )}
+  <div className="flex flex-col md:flex-row gap-6">
+    {/* Poster with fallback */}
+    {movie.poster_path ? (
+      <img
+        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        alt={movie.title}
+        className="max-w-[180px] sm:max-w-[300px] w-full mx-auto sm:mx-0 rounded object-contain"
+        style={{ aspectRatio: "2 / 3" }}
+      />
+    ) : (
+      <div
+        className="max-w-[180px] sm:max-w-[300px] w-full mx-auto sm:mx-0 rounded bg-[#1A2E1D] flex items-center justify-center"
+        style={{ aspectRatio: "2 / 3" }}
+      >
+        <svg
+          className="w-16 h-16 text-[#3a5c3e]"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm3 3h6v6H9V9z" />
+        </svg>
+      </div>
+    )}
 
         <div className="flex flex-col gap-4 flex-1 pr-12 min-h-full">
           <div className="flex flex-col gap-4">
