@@ -1,6 +1,6 @@
 import NavigationBar from "../components/NavigationBar"
 
-
+// Shown when the user navigates to a route that doesn't exist
 function ErrorPage() {
     return (
         <>

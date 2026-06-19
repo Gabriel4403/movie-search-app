@@ -14,8 +14,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      // FIX: `index` must be a boolean, not a string. Also removed the
-      // redundant `path: "/"` — index routes must not have a path.
+      
       { index: true, element: <WatchList /> },
       { path: "/watched", element: <WatchedList /> },
       { path: "/search", element: <SearchPage /> },

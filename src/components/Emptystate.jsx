@@ -1,3 +1,5 @@
+// Reusable empty state display shown when a list has no items or no search results
+// Accepts an icon, a title, and an optional subtitle
 function EmptyState({ icon, title, subtitle }) {
   return (
     <div className="flex flex-col items-center justify-center py-20 gap-4 text-center">
@@ -8,6 +10,7 @@ function EmptyState({ icon, title, subtitle }) {
   );
 }
 
+// Icon for when the watchlist is empty — bookmark/ribbon shape
 export const WatchlistEmptyIcon = () => (
   <svg width="80" height="80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
     <path strokeLinecap="round" strokeLinejoin="round"
@@ -15,6 +18,7 @@ export const WatchlistEmptyIcon = () => (
   </svg>
 );
 
+// Icon for when the watched list is empty — video camera shape
 export const WatchedEmptyIcon = () => (
   <svg width="80" height="80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
     <path strokeLinecap="round" strokeLinejoin="round"
@@ -22,6 +26,7 @@ export const WatchedEmptyIcon = () => (
   </svg>
 );
 
+// Icon for when no search results are found — magnifying glass shape
 export const SearchEmptyIcon = () => (
   <svg width="80" height="80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
     <path strokeLinecap="round" strokeLinejoin="round"

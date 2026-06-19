@@ -15,6 +15,7 @@ import MovieCard from "../components/Moviecard";
 import SkeletonCard from "../components/Skeletoncard";
 import EmptyState, { WatchedEmptyIcon } from "../components/Emptystate";
 
+// Apply active filters and sort order to the watched list
 function applyFiltersAndSort(list, filters) {
   let result = [...list];
   if (filters.genre) result = result.filter((m) => m.genre_ids?.includes(Number(filters.genre)));
@@ -33,6 +34,8 @@ function applyFiltersAndSort(list, filters) {
   }
 }
 
+// Watched List page — shows all movies the user has marked as watched
+// Supports filtering, rating editing, moving back to watchlist, and deletion
 function WatchedList() {
   const dispatch = useDispatch();
   const [toast, setToast] = useState(null);
@@ -44,6 +47,7 @@ function WatchedList() {
     setTimeout(() => setToast(null), 3000);
   }
 
+  // Fetch the watched list from the backend on mount
   useEffect(() => { dispatch(fetchWatchedList()); }, [dispatch]);
 
   function handleMovieClick(id) {
@@ -57,6 +61,7 @@ function WatchedList() {
     showToast(`"${title}" removed from Watched List.`);
   }
 
+  // Update the personal rating for the currently open movie
   function handleEditRating(newRating) {
     if (movieDetails) {
       dispatch(updateUserRating({ movieId: movieDetails.id, userRating: newRating }));
@@ -66,6 +71,7 @@ function WatchedList() {
     }
   }
 
+  // Move a movie back to the watchlist — deletes from watched first, then adds to watchlist
   function handleMoveToWatchlist() {
     if (movieDetails) {
       const movie = watched.find((m) => m.id === movieDetails.id);
@@ -77,7 +83,7 @@ function WatchedList() {
     }
   }
 
-  
+  // Find the currently open movie in the watched list to get its existing user rating
   const openMovieInWatched = movieDetails
     ? watched.find((m) => m.id === movieDetails.id)
     : null;
@@ -85,59 +91,62 @@ function WatchedList() {
   const filtered = applyFiltersAndSort(watched, filters);
 
   return (
-  <div className="mt-24 pt-16 p-4 min-h-screen">
-    {toast && (
-      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-xl shadow-lg text-sm font-semibold
-        ${toast.type === "error" ? "bg-red-600 text-white" : "bg-[#4ADE80] text-[#0E1510]"}`}>
-        {toast.message}
-      </div>
-    )}
-
-    <Modal
-      isOpen={isModalOpen}
-      onClose={() => dispatch(closeModal())}
-      movie={movieDetails}
-      showWatchListButton={false}
-      showWatchedButton={false}
-      showDeleteButton={true}
-      showMoveToWatchlistButton={true}
-      onDeleteMovie={handleDeleteMovie}
-      onEditRating={handleEditRating}
-      onMoveToWatchlist={handleMoveToWatchlist}
-      existingUserRating={openMovieInWatched?.userRating}
-    />
-
-    <div className="mx-auto w-full max-w-4xl">
-      <h1 className="text-3xl font-bold text-white mb-2 text-center">Your Watched List</h1>
-      <div className="flex justify-center">
-        <Filters showUserRating={true} />
-      </div>
-
-      {loading && watched.length === 0 ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)}
-        </div>
-      ) : filtered.length === 0 ? (
-        <EmptyState
-          icon={<WatchedEmptyIcon />}
-          title={watched.length === 0 ? "No watched movies yet" : "No movies match your filters"}
-          subtitle={watched.length === 0 ? "Mark movies as watched from your Watchlist" : "Try adjusting or clearing the filters"}
-        />
-      ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {filtered.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              onClick={() => handleMovieClick(movie.id)}
-              showUserRating={true}
-            />
-          ))}
+    <div className="mt-24 pt-16 p-4 min-h-screen">
+      {/* Toast notification — green for success, red for error */}
+      {toast && (
+        <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-xl shadow-lg text-sm font-semibold
+          ${toast.type === "error" ? "bg-red-600 text-white" : "bg-[#4ADE80] text-[#0E1510]"}`}>
+          {toast.message}
         </div>
       )}
+
+      {/* Modal shows Edit Rating, Move to Watchlist, and Delete buttons for watched movies */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => dispatch(closeModal())}
+        movie={movieDetails}
+        showWatchListButton={false}
+        showWatchedButton={false}
+        showDeleteButton={true}
+        showMoveToWatchlistButton={true}
+        onDeleteMovie={handleDeleteMovie}
+        onEditRating={handleEditRating}
+        onMoveToWatchlist={handleMoveToWatchlist}
+        existingUserRating={openMovieInWatched?.userRating}
+      />
+
+      <div className="mx-auto w-full max-w-4xl">
+        <h1 className="text-3xl font-bold text-white mb-2 text-center">Your Watched List</h1>
+        <div className="flex justify-center">
+          {/* showUserRating enables the personal rating filter and rating display on cards */}
+          <Filters showUserRating={true} />
+        </div>
+
+        {loading && watched.length === 0 ? (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)}
+          </div>
+        ) : filtered.length === 0 ? (
+          <EmptyState
+            icon={<WatchedEmptyIcon />}
+            title={watched.length === 0 ? "No watched movies yet" : "No movies match your filters"}
+            subtitle={watched.length === 0 ? "Mark movies as watched from your Watchlist" : "Try adjusting or clearing the filters"}
+          />
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {filtered.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                onClick={() => handleMovieClick(movie.id)}
+                showUserRating={true}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default WatchedList;

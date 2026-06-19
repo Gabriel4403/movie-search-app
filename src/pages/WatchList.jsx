@@ -7,13 +7,14 @@ import {
   addToWatched,
   getMovieDetails,
   removeFromWatchlist,
-} from "../store/moviesSlice";       
+} from "../store/moviesSlice";
 import Modal from "../components/Modal";
 import Filters from "../components/Filter";
 import MovieCard from "../components/Moviecard";
 import SkeletonCard from "../components/Skeletoncard";
 import EmptyState, { WatchlistEmptyIcon } from "../components/Emptystate";
 
+// Apply active filters and sort order to the watchlist
 function applyFiltersAndSort(list, filters) {
   let result = [...list];
   if (filters.genre) result = result.filter((m) => m.genre_ids?.includes(Number(filters.genre)));
@@ -31,6 +32,8 @@ function applyFiltersAndSort(list, filters) {
   }
 }
 
+// Watchlist page — shows movies the user wants to watch
+// Supports filtering, marking as watched (with optional rating), and removal
 function WatchList() {
   const dispatch = useDispatch();
   const [toast, setToast] = useState(null);
@@ -42,12 +45,14 @@ function WatchList() {
     setTimeout(() => setToast(null), 3000);
   }
 
+  // Fetch the watchlist from the backend on mount
   useEffect(() => { dispatch(fetchWatchList()); }, [dispatch]);
 
   function handleMovieClick(id) {
     dispatch(getMovieDetails(id)).then(() => dispatch(openModal()));
   }
 
+  // Mark a movie as watched — blocks if already in the watched list
   function handleAddWatched(userRating) {
     if (movieDetails) {
       const exists = moviesState.watched.find((m) => m.id === movieDetails.id);
@@ -62,6 +67,7 @@ function WatchList() {
     }
   }
 
+  // Remove a movie from the watchlist without marking it as watched
   function handleRemove(movieId) {
     const title = movieDetails?.title;
     dispatch(removeFromWatchlist(movieId));
@@ -71,51 +77,53 @@ function WatchList() {
 
   const filtered = applyFiltersAndSort(watchlist, filters);
 
- return (
-  <div className="mt-24 pt-16 p-4 min-h-screen">
-    {toast && (
-      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-xl shadow-lg text-sm font-semibold
-        ${toast.type === "error" ? "bg-red-600 text-white" : "bg-[#4ADE80] text-[#0E1510]"}`}>
-        {toast.message}
-      </div>
-    )}
-
-    <Modal
-      isOpen={isModalOpen}
-      onClose={() => dispatch(closeModal())}
-      movie={movieDetails}
-      showWatchListButton={false}
-      onAddWatched={handleAddWatched}
-      showDeleteButton={true}
-      onDeleteMovie={handleRemove}
-    />
-
-    <div className="mx-auto w-full max-w-4xl">
-      <h1 className="text-3xl font-bold text-white mb-2 text-center">Your Watch List</h1>
-      <div className="flex justify-center">
-        <Filters />
-      </div>
-
-      {loading && watchlist.length === 0 ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)}
-        </div>
-      ) : filtered.length === 0 ? (
-        <EmptyState
-          icon={<WatchlistEmptyIcon />}
-          title={watchlist.length === 0 ? "Your watchlist is empty" : "No movies match your filters"}
-          subtitle={watchlist.length === 0 ? "Search for movies and add them to your watchlist" : "Try adjusting or clearing the filters"}
-        />
-      ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {filtered.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} onClick={() => handleMovieClick(movie.id)} />
-          ))}
+  return (
+    <div className="mt-24 pt-16 p-4 min-h-screen">
+      {/* Toast notification — green for success, red for error */}
+      {toast && (
+        <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-xl shadow-lg text-sm font-semibold
+          ${toast.type === "error" ? "bg-red-600 text-white" : "bg-[#4ADE80] text-[#0E1510]"}`}>
+          {toast.message}
         </div>
       )}
+
+      {/* Modal shows Add to Watched and Delete buttons for watchlist movies */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => dispatch(closeModal())}
+        movie={movieDetails}
+        showWatchListButton={false}
+        onAddWatched={handleAddWatched}
+        showDeleteButton={true}
+        onDeleteMovie={handleRemove}
+      />
+
+      <div className="mx-auto w-full max-w-4xl">
+        <h1 className="text-3xl font-bold text-white mb-2 text-center">Your Watch List</h1>
+        <div className="flex justify-center">
+          <Filters />
+        </div>
+
+        {loading && watchlist.length === 0 ? (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)}
+          </div>
+        ) : filtered.length === 0 ? (
+          <EmptyState
+            icon={<WatchlistEmptyIcon />}
+            title={watchlist.length === 0 ? "Your watchlist is empty" : "No movies match your filters"}
+            subtitle={watchlist.length === 0 ? "Search for movies and add them to your watchlist" : "Try adjusting or clearing the filters"}
+          />
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {filtered.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} onClick={() => handleMovieClick(movie.id)} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default WatchList;

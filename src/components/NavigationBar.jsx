@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 
+// Top navigation bar with links to Watchlist, Watched List, and Search pages
+// Active link gets a green highlight via NavLink's isActive prop
 function NavigationBar() {
   return (
     <div className="absolute inset-x-0 top-0 border-b border-[#243B27] h-[15%] bg-[#1A2E1D] flex flex-col items-center shadow-xl justify-center md:rounded-2xl">
@@ -36,6 +38,7 @@ function NavigationBar() {
           </NavLink>
         </div>
 
+        {/* Search icon link — navigates to the search page */}
         <NavLink
           to="/search"
           className={({ isActive }) =>

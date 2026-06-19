@@ -1,17 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setFilters } from "../store/moviesSlice";
 
+// Shared Tailwind classes for all filter selects — appearance-none hides the native arrow
+// so we can use our own custom ▾ character instead
 const SELECT_CLASS =
   "bg-[#1A2E1D] border border-[#243B27] text-[#F0FDF4] p-2 pr-8 rounded appearance-none cursor-pointer w-full";
 
+// Filter bar for genre, rating, year, sort, and optionally personal rating
+// Dispatches filter changes directly to Redux so all list pages react immediately
 function Filters({ showUserRating = false }) {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.movies.filters);
 
+  // Update a single filter field by name while preserving all other filter values
   function handleChange(e) {
     dispatch(setFilters({ ...filters, [e.target.name]: e.target.value }));
   }
 
+  // Wraps a select with a custom dropdown arrow since appearance-none removes the native one
   function SelectWrapper({ children }) {
     return (
       <div className="relative">
@@ -24,6 +30,7 @@ function Filters({ showUserRating = false }) {
   }
 
   return (
+    // 2-column grid on mobile, flex wrap on sm: and above
     <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3 my-4 text-white sm:justify-center">
       <SelectWrapper>
         <select name="genre" value={filters.genre} onChange={handleChange} className={SELECT_CLASS}>
