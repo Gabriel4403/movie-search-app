@@ -2,7 +2,7 @@
 
 A full-stack movie tracking app that lets users search for films, manage a personal watchlist, and keep track of movies they've already watched — complete with personal ratings and filters.
 
-**Live Demo:** [movie-search-app-onofreigabriel.vercel.app](https://movie-search-app-onofreigabriel.vercel.app)
+**Live Demo:** [movie-search-app-six-eta.vercel.app](https://movie-search-app-six-eta.vercel.app)
 
 ---
 
@@ -97,11 +97,11 @@ movie-search/
 
 ---
 
-## Environment Variables
+## Future Improvements
 
-| Variable | Description |
-|---|---|
-| `VITE_TMDB_API_KEY` | Your TMDB API key |
-| `VITE_API_URL` | Backend URL (Railway in production, localhost in dev) |
-| `ALLOWED_ORIGIN` | Frontend URL allowed by CORS (backend only) |
-| `PORT` | Port the backend runs on (set automatically by Railway) |
+- **User accounts** — allow multiple users to have their own independent watchlist and watched list
+- **Database storage** — migrate from JSON file storage to a proper database (PostgreSQL or MySQL) for better scalability
+- **Review system** — let users write short text reviews alongside their personal ratings
+- **Social sharing** — share your watchlist or watched list with friends via a public link
+- **Movie recommendations** — suggest similar movies based on what's already in the watched list
+- **Notifications** — alert users when a movie on their watchlist becomes available on a streaming platform
